@@ -1,25 +1,9 @@
-import Quiz from "../models/Quiz.js"
+import User from "../models/User.js"
 
-
-export const create = (req, res) => {
-    const newQuiz = new Quiz({
-        pertanyaan: req.body.pertanyaan,
-        opsi: req.body.opsi,
-        correctAnswer: req.body.correctAnswer
-    })
-
-    Quiz.create(newQuiz, (err, data) => {
-        console.log(err)
-        if(err) {
-            res.status(500).send({msg:"Exist some error"})
-        }
-        res.send(data)
-    })
-}
 
 export const findAll = (req, res) => {
     console.log(req.userId)
-    Quiz.getAll((err, data) => {
+    User.getAll((err, data) => {
         
         if(err){
             console.log(err)
@@ -29,12 +13,13 @@ export const findAll = (req, res) => {
     })
 }
 
+
 export const findOne = (req, res)=>{
-    Quiz.findById(req.params.id, (err, data)=>{
+    User.findById(req.params.id, (err, data)=>{
         if(err) {
             if(err.type === 'not_found'){
                 res.status(404).send({
-                    messagge: `not found pertanyaan with id : ${req.params.id}`
+                    messagge: `not found user with id : ${req.params.id}`
                 })
                 return
             }else{
@@ -49,8 +34,8 @@ export const findOne = (req, res)=>{
 
 
 export const update = (req, res) =>{
-    const quizData = new Quiz(req.body)
-    Quiz.update(req.params.id, quizData, (err, data) => {
+    const userData = new User(req.body)
+    User.update(req.params.id, userData, (err, data) => {
         if(err) {
             if(err.type === 'not_found'){
                 res.status(404).send({
@@ -66,8 +51,8 @@ export const update = (req, res) =>{
  }
 
 
-export const destroy = (req, res) => {
-    Quiz.delete(req.params.id, (err, data) =>{
+ export const destroy = (req, res) => {
+    User.delete(req.params.id, (err, data) =>{
         if(err) {
             if(err.type === 'not_found'){
                 res.status(404).send({

@@ -1,7 +1,9 @@
-import sql from "./connection2.js";
+import sql from "./connection.js";
 
 const Quiz = function(question){
-    this.pertanyaan = question.pertanyaan
+    this.pertanyaan = question.pertanyaan,
+    this.opsi = question.opsi,
+    this.correctAnswer = question.correctAnswer
 }
 
 Quiz.create = (newQuiz, result) => {
@@ -12,7 +14,7 @@ Quiz.create = (newQuiz, result) => {
 }
 
 Quiz.getAll =(result) => {
-    sql.query("SELECT q.id, q.pertanyaan, a.answer FROM questions q JOIN answers a ON q.id = a.id_questions",(err, res) => {
+    sql.query("SELECT id, pertanyaan, opsi FROM questions", (err, res) => {    
         if(err) result(err, null)
         result(null, res)
     })
