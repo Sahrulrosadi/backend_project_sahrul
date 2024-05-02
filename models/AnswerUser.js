@@ -6,9 +6,9 @@ const AnswerUser = function(jawaban){
 
 AnswerUser.getAll = (result) => {
     sql.query("SELECT id, correctAnswer FROM questions", (err, res) => {
-       // "SELECT q.id, q.pertanyaan, a.answer FROM questions q JOIN answers a ON q.id = a.id_questions"
-       
-        if(err) result(err, null)
+        if(err) {
+            result(err, null)
+        }
         result(null, res)
     })
 }

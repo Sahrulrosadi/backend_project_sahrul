@@ -19,10 +19,10 @@ Quiz.getAll =(result) => {
         result(null, res)
     })
 }
-
+ 
 
 Quiz.findById = (id, result) => {
-    sql.query(`SELECT * FROM questions WHERE id = ${id}`, (err, res)=> {
+    sql.query(`SELECT id, pertanyaan, opsi FROM questions = ${id}`, (err, res)=> {
         if(err) {
             result(err, null)
             return

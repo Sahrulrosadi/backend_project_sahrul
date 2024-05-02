@@ -3,7 +3,7 @@ import { create, findAll, findOne, update, destroy} from "../controllers/quiz.co
 import authJwt from "../middlewares/authJwt.js";
 const quizRoute = Router()
 
-
+  
 quizRoute.use(authJwt)
 quizRoute.post('/', create)
 quizRoute.get('/', findAll)

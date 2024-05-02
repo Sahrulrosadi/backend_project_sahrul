@@ -3,7 +3,6 @@ import AnswerUser from "../models/AnswerUser.js"
 export const findAll = (req, res) => {
     console.log(req.userId)
     AnswerUser.getAll((err, data) => {
-        
         if(err){
             console.log(err)
             res.status(500).send({msg: "exist some error"})
@@ -47,9 +46,9 @@ export const checkAnswer = (req, res)=>{
             }
             console.log(data.correctAnswer);
         }if (correctAnswer === data.correctAnswer) {
-            res.json({ correct: true });
+            res.json({msg:"Jawaban Benar"})
         } else {
-            res.json({ correct: false });
+            res.json({msg:"Jawban Salah"})
         }
     })
 }

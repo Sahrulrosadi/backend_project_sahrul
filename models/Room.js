@@ -18,7 +18,7 @@ Room.create = (newRoom, result) => {
 }
 
 Room.getAll = (result) => {
-    sql.query("SELECT * FROM rooms", (err, res) => {
+    sql.query("SELECT * FROM rooms ", (err, res) => {
         if(err) {
             result(err, null)
         }
