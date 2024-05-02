@@ -52,6 +52,12 @@ Request :
 ```
 <br />
 
+## Role User
+- superadmin
+- admin
+- user(default)
+
+
 
 ### User
 <hr>
